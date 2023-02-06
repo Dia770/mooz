@@ -33,6 +33,8 @@ pip install -r requirements.txt
 
 Avec mysql, créez une base de données `tontine_app`. Vous pouvez utiliser un serveur XAMPP, vous pouvez lire [install-mysql-and-phpmyadmin-with-xampp]https://www.jcchouinard.com/install-mysql-and-phpmyadmin-with-xampp/ pour commencer.
 
+Rendez vous dans models.py pour renseigner les informations de votre base de données
+
 ### Migration de la base de données
 
 Pour initialiser le fichier de migration, exécutez :
