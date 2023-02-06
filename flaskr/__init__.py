@@ -241,7 +241,8 @@ def create_app(test_config=None):
 
     # This route modifies a user
     @app.route("/users", methods=['PATCH'])
-    def update_user():
+    @token_required
+    def update_user(current_user):
 
         # GETTING REQUEST BODY
         body = request.get_json()
@@ -249,43 +250,35 @@ def create_app(test_config=None):
 
         # UPDATE USER
         if all(key in post_body for key in ("name", "password")):
-            user_name = body.get("name", None)
-            user_pass = body.get("password", None)
-            new_name = body.get("new_name", None)
-            new_password = body.get("new_password", None)
+            new_name = body.get("name", None)
+            new_password = body.get("password", None)
 
-            if (user_name and user_pass):
+            if (new_name or new_password):
+                user_with_that_id = User.query.get(1)
+                if user_with_that_id:
+                    # hash
+                    hash_pass = generate_password_hash(
+                        new_password, method=HASH_METHOD)
+                    # store hashpass without method
+                    hash_pass_without_method = hash_pass.replace(
+                        HASH_METHOD, '')
 
-                query = User.query.filter(User.name.ilike('%'+user_name+'%'))
-                user_with_that_name = query.first()
+                    user_with_that_id.user_id = random_char()
+                    if new_name:
+                        user_with_that_id.name = new_name
+                    if new_password:
+                        user_with_that_id.password = hash_pass_without_method
 
-                if user_with_that_name:
-                    if check_password_hash(HASH_METHOD+user_with_that_name.password, user_pass):
-                        # hash
-                        hash_pass = generate_password_hash(
-                            new_password, method=HASH_METHOD)
-                        # store hashpass without method
-                        hash_pass_without_method = hash_pass.replace(
-                            HASH_METHOD, '')
+                    user_with_that_id.update()
 
-                        user_with_that_name.user_id = random_char()
-                        if new_name:
-                            user_with_that_name.name = new_name
-                        if new_password:
-                            user_with_that_name.password = hash_pass_without_method
-
-                        user_with_that_name.update()
-
-                        if new_name or new_password:
-                            return make_json_response(code=200, message="user_updated", detail="user modified", success=True, data=user_with_that_name.format_without_password())
-                        else:
-                            return abort(400)
+                    if new_name or new_password:
+                        return make_json_response(code=200, message="user_updated", detail="user modified", success=True, data=user_with_that_id.format_without_password())
                     else:
-                        abort(401)
+                        return abort(400)
                 else:
-                    abort(401)
+                    abort(404)
             else:
-                abort(401)
+                abort(400)
         else:
             abort(400)
 

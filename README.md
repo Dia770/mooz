@@ -66,7 +66,7 @@ Le serveur fonctionnera sur `127.0.0.1:5000`.
 
 ## Cocumentation des points de terminaison de l'API
 
-`POST '/sign-up'``
+<!-- `POST '/sign-up'``
 
 - Créer un nouvel utilisateur, cet utilisateur represente le service tier.
 - Arguments de la requête :
@@ -78,7 +78,7 @@ Le serveur fonctionnera sur `127.0.0.1:5000`.
 }
 ```
 
-- Retourne dans "data" : toutes les informations du nouvel utilisateur sauf le mot de passe et le user_id, et un jeton qui contient son `user_id:` et qui lui permettra d'utiliser les routes de connexion requises
+- Retourne dans "data" : un jeton qui contient son `user_id:` et qui lui permettra d'utiliser les routes de connexion requises
 
 ```json
 {
@@ -92,43 +92,33 @@ Le serveur fonctionnera sur `127.0.0.1:5000`.
   "message": "user_inserted",
   "success": true
 }
-```
+``` -->
 
 `POST '/login'``
 
-- Connecter un utilisateur
+- Se connecter en tant qu'utilisateur
 - Arguments de la requête :
-
-``json
-{
-"con_telephone" : "+223 90442359",
-"con_password" : "mypass"
-}
-
-````
-
-- Retourne dans "data" : toutes les informations du nouvel utilisateur sauf le mot de passe et le user_id, et un token qui contient son `user_id:` et qui lui permettra d'utiliser les routes de connexion requises
 
 ```json
 {
-  "code" : 200,
-  "data" : {
-    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMmMxMzA3ZHF0bnZ1MyIsInBob25lIjoiKzIyMyA5MDQ0MjM1OSIsImV4cCI6MTY3NTU5OTg0M30._NuB9lgVF0yQRZ5-fNoYxddF0o9FzwnxaDc_taTWCvA",
-    "utilisateur" : {
-      "card_number" : "48795129",
-      "card_type" : "Passeport",
-      "first_name" : "Amadou",
-      "id" : 6,
-      "last_name" : "Diallo",
-      "mot de passe" : null,
-      "téléphone" : "+223 90442359"
-    }
-  },
-  "detail" : "utilisateur connecté avec succès",
-  "message" : "utilisateur_vérifié",
-  "success" : true
+  "name": "orange money",
+  "password": "orange money"
 }
-````
+```
+
+- Retourne dans "data" : un token qui contient son `user_id:` et qui lui permettra d'utiliser les routes de connexion requises
+
+```json
+{
+  "code": 200,
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZnk2cWNlemRkaXJzN2RvNyIsImV4cCI6MTY3NTY4ODA1NX0.I340V5pz4L2nlmJJRKmGwpCsB4IBFMZUYHNAW0JFARM"
+  },
+  "detail": "orange money",
+  "message": "user_verified",
+  "success": true
+}
+```
 
 ## Tests
 
@@ -137,7 +127,4 @@ Pour déployer les tests, exécutez
 ``bash
 python test_flaskr.py
 
-```
-
-Traduit avec www.DeepL.com/Translator (version gratuite)
-```
+``
