@@ -100,7 +100,6 @@ class User(db.Model):
     def format_without_password(self):
         return {
             'id': self.id,
-            'user_id': self.user_id,
             'name': self.name,
             'password': "############"
         }

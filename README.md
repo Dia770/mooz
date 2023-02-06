@@ -68,16 +68,13 @@ Le serveur fonctionnera sur `127.0.0.1:5000`.
 
 `POST '/sign-up'``
 
-- Créer un nouvel utilisateur
+- Créer un nouvel utilisateur, cet utilisateur represente le service tier.
 - Arguments de la requête :
 
 ```json
 {
-  "prénom": "Amadou",
-  "last_name": "Diallo",
-  "numéro de carte": "P-48795129",
-  "Téléphone": "+223 90442359",
-  "password": "mypass"
+  "name": "orange money",
+  "password": "orange money"
 }
 ```
 
@@ -87,19 +84,12 @@ Le serveur fonctionnera sur `127.0.0.1:5000`.
 {
   "code": 200,
   "data": {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMmMxMzA3ZHF0bnZ1MyIsInBob25lIjoiKzIyMyA5MDQ0MjM1OSIsImV4cCI6MTY3NTU5OTg0M30._NuB9lgVF0yQRZ5-fNoYxddF0o9FzwnxaDc_taTWCvA",
-    "utilisateur": {
-      "card_number": "48795129",
-      "card_type": "Passeport",
-      "first_name": "Amadou",
-      "id": 6,
-      "last_name": "Diallo",
-      "mot de passe": null,
-      "téléphone": "+223 90442359"
-    }
+    "id": 6,
+    "name": "orange money",
+    "password": "############"
   },
-  "detail": "utilisateur créé avec succès",
-  "message": "utilisateur_créé",
+  "detail": "User created successfully",
+  "message": "user_inserted",
   "success": true
 }
 ```
