@@ -23,11 +23,11 @@ pip install -r requirements.txt
 
 #### Dépendances Pip clés
 
-- Flask](http://flask.pocoo.org/) est un framework léger de microservices backend. Flask est nécessaire pour gérer les demandes et les réponses.
+- [Flask](http://flask.pocoo.org/) est un framework léger de microservices backend. Flask est nécessaire pour gérer les demandes et les réponses.
 
-- SQLAlchemy](https://www.sqlalchemy.org/) est la boîte à outils SQL Python et l'ORM que nous utiliserons pour gérer la base de données SQL légère. Vous travaillerez principalement dans `app.py` et pourrez faire référence à `models.py`.
+- [SQLAlchemy](https://www.sqlalchemy.org/) est la boîte à outils SQL Python et l'ORM que nous utiliserons pour gérer la base de données SQL légère. Vous travaillerez principalement dans `app.py` et pourrez faire référence à `models.py`.
 
-- Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) est l'extension que nous utiliserons pour gérer les requêtes d'origine croisée de notre serveur frontal.
+- [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) est l'extension que nous utiliserons pour gérer les requêtes d'origine croisée de notre serveur frontal.
 
 ### Configuration de la base de données
 
