@@ -1,0 +1,17 @@
+
+data = {
+    'search_name': name,
+    'search_password': password
+}
+url = 'http://127.0.0.1:5000/users'
+headers = {'Content-type': 'application/json'}
+response = requests.post(url, json=data, headers=headers)
+r = response.json()
+if r['message'] == 'User verified successfully':
+    return jsonify({
+        'user': r['Verified (id)'],
+        'code': cd.code_gen(6, '0123456789ABCDEF'),
+        'success': True
+    })
+else:
+    return 'unverified user'

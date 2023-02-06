@@ -1,0 +1,3 @@
+python -m virtualenv venv // create a virtual env named venv
+
+. venv/scripts/activate // activate the virtual env named venv

@@ -1,0 +1,4 @@
+(Warning : Ceci est une phase de test, la configuration actuelle ne doit pas etre utilisé en phase de production) 
+
+1 - Mettre le dossier dezippé dans un emplacement au choix.
+2 - 
