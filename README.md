@@ -19,7 +19,7 @@ Mooz est un service permettant de payer de l'essence avec les stations via des s
 ``bash
 pip install -r requirements.txt
 
-```
+``
 
 #### Dépendances Pip clés
 
@@ -37,17 +37,17 @@ Avec mysql, créez une base de données `tontine_app`. Vous pouvez utiliser un s
 
 Pour initialiser le fichier de migration, exécutez :
 
-``bash
+`bash
 export FLASK_APP=main.py
 flask db init
-```
+`
 
 Pour mettre à jour la base de données au dernier état de models.py , exécutez (`export FLASK_APP=main.py` est nécessaire) :
 
-```bash
+`bash
 flask db migrate
 flask db upgrade
-```
+`
 
 ### Exécuter le serveur
 
@@ -64,7 +64,7 @@ L'option `--reload` détectera les changements de fichiers et redémarrera le se
 
 Le serveur fonctionnera sur `127.0.0.1:5000`.
 
-## Cocumentation des points de terminaison de l'API
+## Documentation des points de terminaison de l'API
 
 <!-- `POST '/sign-up'``
 
