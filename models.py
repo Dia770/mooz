@@ -93,7 +93,6 @@ class User(db.Model):
     def format(self):
         return {
             'id': self.id,
-            'user_id': self.user_id,
             'name': self.name,
             'password': self.password
         }

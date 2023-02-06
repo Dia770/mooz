@@ -211,11 +211,12 @@ def create_app(test_config=None):
             name = body.get("name", None)
             password = body.get("password", None)
             if (name and password):
+
                 # is there an user with that name
                 query = User.query.filter(User.name.ilike('%'+name+'%'))
                 user_with_that_name = query.first()
                 if user_with_that_name:
-                    abort(422)
+                    return make_json_response(code=301, message="username_duplicated", detail="Ce nom d'utilisateur existe déjà. Veuillez vous connectez!", success=True)
 
                 else:
                     # hash

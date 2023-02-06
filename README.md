@@ -1,145 +1,153 @@
-# Backend - Tontine API
+## Mooz - API
 
-## Setting up the Backend
+Mooz est un service permettant de payer de l'essence avec les stations via des services tiers comme Orange Money
 
-### Install Dependencies
+## Mise en place du backend
 
-1. **Python 3.7** - Follow instructions to install the latest version of python for your platform in the [python docs](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python)
+### Installation des dépendances
 
-2. **Virtual Environment**
+1. **Python 3.7** - Suivez les instructions pour installer la dernière version de python pour votre plateforme dans la [docs python](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python).
 
-- We recommend working within a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organized. Instructions for setting up a virual environment for your platform can be found in the [python docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
+2. **Environnement virtuel**
 
-- Read how_to_create_a_virtual_env.txt in help folder to create and activate the virtual env named "virtualenv"
+- Nous vous recommandons de travailler dans un environnement virtuel lorsque vous utilisez Python pour des projets. Cela permet de séparer et d'organiser vos dépendances pour chaque projet. Les instructions pour la mise en place d'un environnement virtuel pour votre plateforme se trouvent dans la [docs python](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/).
 
-3. **PIP Dependencies** - Once your virtual environment is setup and running, install the required dependencies by running in this directory:
+- Lisez how_to_create_a_virtual_env.txt dans le dossier d'aide pour créer et activer l'environnement virtuel nommé "virtualenv".
 
-```bash
+3. **Dépendances PIP** - Une fois que votre environnement virtuel est configuré et fonctionne, installez les dépendances requises en exécutant dans ce répertoire :
+
+``bash
 pip install -r requirements.txt
+
 ```
 
-#### Key Pip Dependencies
+#### Dépendances Pip clés
 
-- [Flask](http://flask.pocoo.org/) is a lightweight backend microservices framework. Flask is required to handle requests and responses.
+- Flask](http://flask.pocoo.org/) est un framework léger de microservices backend. Flask est nécessaire pour gérer les demandes et les réponses.
 
-- [SQLAlchemy](https://www.sqlalchemy.org/) is the Python SQL toolkit and ORM we'll use to handle the lightweight SQL database. You'll primarily work in `app.py`and can reference `models.py`.
+- SQLAlchemy](https://www.sqlalchemy.org/) est la boîte à outils SQL Python et l'ORM que nous utiliserons pour gérer la base de données SQL légère. Vous travaillerez principalement dans `app.py` et pourrez faire référence à `models.py`.
 
-- [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) is the extension we'll use to handle cross-origin requests from our frontend server.
+- Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) est l'extension que nous utiliserons pour gérer les requêtes d'origine croisée de notre serveur frontal.
 
-### Set up the Database
+### Configuration de la base de données
 
-With mysql create a `tontine_app` database. You can use a XAMPP server, you can read [install-mysql-and-phpmyadmin-with-xampp]https://www.jcchouinard.com/install-mysql-and-phpmyadmin-with-xampp/ to get started
+Avec mysql, créez une base de données `tontine_app`. Vous pouvez utiliser un serveur XAMPP, vous pouvez lire [install-mysql-and-phpmyadmin-with-xampp]https://www.jcchouinard.com/install-mysql-and-phpmyadmin-with-xampp/ pour commencer.
 
-### Database migration
+### Migration de la base de données
 
-To initialize the migration file, execute :
+Pour initialiser le fichier de migration, exécutez :
 
-```bash
+``bash
 export FLASK_APP=main.py
 flask db init
 ```
 
-To upgrade the database to the last state of models.py , execute (`export FLASK_APP=main.py` is required):
+Pour mettre à jour la base de données au dernier état de models.py , exécutez (`export FLASK_APP=main.py` est nécessaire) :
 
 ```bash
 flask db migrate
 flask db upgrade
 ```
 
-### Run the Server
+### Exécuter le serveur
 
-From this directory first ensure you are working using your created virtual environment.
+Depuis ce répertoire, assurez-vous d'abord que vous travaillez dans l'environnement virtuel que vous avez créé.
 
-To run the server, execute:
+Pour exécuter le serveur, exécutez :
 
 ```bash
 export FLASK_APP=main.py
 flask run --reload
 ```
 
-The `--reload` flag will detect file changes and restart the server automatically.
+L'option `--reload` détectera les changements de fichiers et redémarrera le serveur automatiquement.
 
-The server will run on `127.0.0.1:5000`
+Le serveur fonctionnera sur `127.0.0.1:5000`.
 
-## API endpoints cocumentation
+## Cocumentation des points de terminaison de l'API
 
-`POST '/sign-up'`
+`POST '/sign-up'``
 
-- Create a new user
-- Request Arguments:
+- Créer un nouvel utilisateur
+- Arguments de la requête :
 
 ```json
 {
-  "first_name": "Amadou",
+  "prénom": "Amadou",
   "last_name": "Diallo",
-  "card_number": "P-48795129",
-  "telephone": "+223 90442359",
+  "numéro de carte": "P-48795129",
+  "Téléphone": "+223 90442359",
   "password": "mypass"
 }
 ```
 
-- Returns in "data": all the info of the new user except the password and the user_id, and a token that contains his `user_id:` and that will help him use the login required routes
+- Retourne dans "data" : toutes les informations du nouvel utilisateur sauf le mot de passe et le user_id, et un jeton qui contient son `user_id:` et qui lui permettra d'utiliser les routes de connexion requises
 
 ```json
 {
   "code": 200,
   "data": {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMmMxMzA3ZHF0bnZ1MyIsInBob25lIjoiKzIyMyA5MDQ0MjM1OSIsImV4cCI6MTY3NTU5OTg0M30._NuB9lgVF0yQRZ5-fNoYxddF0o9FzwnxaDc_taTWCvA",
-    "user": {
+    "utilisateur": {
       "card_number": "48795129",
-      "card_type": "Passport",
+      "card_type": "Passeport",
       "first_name": "Amadou",
       "id": 6,
       "last_name": "Diallo",
-      "password": null,
-      "telephone": "+223 90442359"
+      "mot de passe": null,
+      "téléphone": "+223 90442359"
     }
   },
-  "detail": "user successfully created",
-  "message": "user_created",
+  "detail": "utilisateur créé avec succès",
+  "message": "utilisateur_créé",
   "success": true
 }
 ```
 
-`POST '/login'`
+`POST '/login'``
 
-- Connect a user
-- Request Arguments:
+- Connecter un utilisateur
+- Arguments de la requête :
 
-```json
+``json
 {
-  "con_telephone": "+223 90442359",
-  "con_password": "mypass"
+"con_telephone" : "+223 90442359",
+"con_password" : "mypass"
 }
-```
 
-- Returns in "data": all the info of the new user except the password and the user_id, and a token that contains his `user_id:` and that will help him use the login required routes
+````
+
+- Retourne dans "data" : toutes les informations du nouvel utilisateur sauf le mot de passe et le user_id, et un token qui contient son `user_id:` et qui lui permettra d'utiliser les routes de connexion requises
 
 ```json
 {
-  "code": 200,
-  "data": {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMmMxMzA3ZHF0bnZ1MyIsInBob25lIjoiKzIyMyA5MDQ0MjM1OSIsImV4cCI6MTY3NTU5OTg0M30._NuB9lgVF0yQRZ5-fNoYxddF0o9FzwnxaDc_taTWCvA",
-    "user": {
-      "card_number": "48795129",
-      "card_type": "Passport",
-      "first_name": "Amadou",
-      "id": 6,
-      "last_name": "Diallo",
-      "password": null,
-      "telephone": "+223 90442359"
+  "code" : 200,
+  "data" : {
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMmMxMzA3ZHF0bnZ1MyIsInBob25lIjoiKzIyMyA5MDQ0MjM1OSIsImV4cCI6MTY3NTU5OTg0M30._NuB9lgVF0yQRZ5-fNoYxddF0o9FzwnxaDc_taTWCvA",
+    "utilisateur" : {
+      "card_number" : "48795129",
+      "card_type" : "Passeport",
+      "first_name" : "Amadou",
+      "id" : 6,
+      "last_name" : "Diallo",
+      "mot de passe" : null,
+      "téléphone" : "+223 90442359"
     }
   },
-  "detail": "user successfully connected",
-  "message": "user_verified",
-  "success": true
+  "detail" : "utilisateur connecté avec succès",
+  "message" : "utilisateur_vérifié",
+  "success" : true
 }
-```
+````
 
-## Testing
+## Tests
 
-To deploy the tests, run
+Pour déployer les tests, exécutez
 
-```bash
+``bash
 python test_flaskr.py
+
+```
+
+Traduit avec www.DeepL.com/Translator (version gratuite)
 ```
