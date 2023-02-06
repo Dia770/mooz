@@ -106,7 +106,7 @@ Le serveur fonctionnera sur `127.0.0.1:5000`.
 }
 ```
 
-- Retourne dans "data" : un token qui contient son `user_id:` et qui lui permettra d'utiliser les routes de connexion requises
+- Retourne dans "data" : un token qui contient le `user_id:` et qui permettra d'utiliser les routes qui necessitent une authentification
 
 ```json
 {
@@ -116,6 +116,39 @@ Le serveur fonctionnera sur `127.0.0.1:5000`.
   },
   "detail": "orange money",
   "message": "user_verified",
+  "success": true
+}
+```
+
+`POST '/generate'``
+
+- Permet au service tier de génerer un ticket à usage unique pour le client qui souhaite acheter de l'essence.
+- Arguments de la requête :
+
+```json
+{
+  "telephone": "+223 80442359",
+  "montant": "2000"
+}
+```
+
+`telephone:` le numéro de telephone du client
+`montant:` le montant payé par le client
+
+- Retourne success si l'echange c'est bien passé. Et dans "data" se trouve les informations reçues par le serveur, la date et le code que le client devra utiliser à la station.
+
+```json
+{
+  "code": 200,
+  "data": {
+    "code": "3C7076",
+    "datetime": "Mon, 06 Feb 2023 20:35:19 GMT",
+    "montant": "2000",
+    "telephone": "80442359",
+    "username": "orange money"
+  },
+  "detail": "It worked !!",
+  "message": "code_created",
   "success": true
 }
 ```
