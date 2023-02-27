@@ -149,7 +149,6 @@ Le serveur fonctionnera sur `127.0.0.1:5000`.
 {
   "code": 200,
   "data": {
-    "code": "3C7076",
     "datetime": "Mon, 06 Feb 2023 20:35:19 GMT",
     "montant": "2000",
     "telephone": "80442359",
