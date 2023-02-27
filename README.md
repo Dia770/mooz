@@ -37,7 +37,7 @@ Rendez vous dans models.py pour renseigner les informations de votre base de don
 
 ### Migration de la base de données
 
-Pour initialiser le fichier de migration, exécutez :
+Pour initialiser les fichiers de migration, exécutez :
 
 `bash
 export FLASK_APP=main.py
@@ -60,6 +60,12 @@ Pour exécuter le serveur, exécutez :
 ```bash
 export FLASK_APP=main.py
 flask run --reload
+```
+
+ou
+
+```bash
+python main.py
 ```
 
 L'option `--reload` détectera les changements de fichiers et redémarrera le serveur automatiquement.

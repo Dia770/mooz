@@ -112,7 +112,7 @@ def create_app(test_config=None):
 
                 data = {
                     'username': current_user["name"],
-                    'code': codeGen,
+                    # 'code': codeGen,
                     'telephone': telephone,
                     'montant': montant,
                     'datetime': date_time
