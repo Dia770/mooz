@@ -1,0 +1,22 @@
+ssh user@machine -p <PORT>
+
+TERM 1 :
+
+socketxp login "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjI2MzAwOTY4NTksImtleSI6IjJhZDNhMzNiLTJmYmMtNGYxZS1hZjhmLTM3MWYyMjI0ZDhlZiJ9.kA4WjXfqzukQAKkh4ORae4eG1Mca09xqJvyU6O3FhE0" --iot-device-name "sensor12345" --iot-device-group "temp-sensor"
+
+socketxp connect http://localhost:5000
+
+
+
+TERM 2 :
+
+cd mooz-master
+
+. venv/bin/activate
+
+export FLASK_APP=main.py
+
+flask run --host=0.0.0.0
+
+
+

@@ -12,7 +12,7 @@ Mooz est un service permettant de payer de l'essence avec les stations via des s
 
 - Nous vous recommandons de travailler dans un environnement virtuel lorsque vous utilisez Python pour des projets. Cela permet de séparer et d'organiser vos dépendances pour chaque projet. Les instructions pour la mise en place d'un environnement virtuel pour votre plateforme se trouvent dans la [docs python](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/).
 
-- Lisez how_to_create_a_virtual_env.txt dans le dossier d'aide pour créer et activer l'environnement virtuel nommé "virtualenv".
+- Lisez how_to_create_a_virtual_env.txt pour créer et activer l'environnement virtuel nommé "virtualenv".
 
 3. **Dépendances PIP** - Une fois que votre environnement virtuel est configuré et fonctionne, installez les dépendances requises en exécutant dans ce répertoire :
 
@@ -34,21 +34,6 @@ pip install -r requirements.txt
 Avec mysql, créez une base de données `tontine_app`. Vous pouvez utiliser un serveur XAMPP, vous pouvez lire [install-mysql-and-phpmyadmin-with-xampp]https://www.jcchouinard.com/install-mysql-and-phpmyadmin-with-xampp/ pour commencer.
 
 Rendez vous dans models.py pour renseigner les informations de votre base de données
-
-### Migration de la base de données
-
-Pour initialiser les fichiers de migration, exécutez :
-
-`bash
-export FLASK_APP=main.py
-flask db init
-`
-
-Pour mettre à jour la base de données au dernier état de models.py , exécutez (`export FLASK_APP=main.py` est nécessaire) :
-
-`bash
-flask db migrate
-flask db upgrade
 `
 
 ### Exécuter le serveur
