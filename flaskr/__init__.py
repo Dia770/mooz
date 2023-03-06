@@ -254,7 +254,7 @@ def create_app(test_config=None):
             new_password = body.get("password", None)
 
             if (new_name or new_password):
-                user_with_that_id = User.query.get(1)
+                user_with_that_id = User.query.get(current_user["id"])
                 if user_with_that_id:
                     # hash
                     hash_pass = generate_password_hash(

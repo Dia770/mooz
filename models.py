@@ -213,3 +213,37 @@ class Connexion(db.Model):
             'id_user': self.id_user,
             'username': self.username
         }
+
+
+### ADMIN ###
+class Admin(db.Model):
+    __tablename__ = 'admins'
+
+    id = Column(Integer, primary_key=True)
+    admin_id = Column(Integer)
+    admin_name = Column(String(64))
+    password = Column(String(64))
+    role = Column(String(10), default="simple")
+
+    # def __init__(self, date_time, id_user, username):
+    #     self.date_time = date_time
+    #     self.id_user = id_user
+    #     self.username = username
+
+    # def insert(self):
+    #     db.session.add(self)
+    #     db.session.commit()
+
+    # def update(self):
+    #     db.session.commit()
+
+    # def delete(self):
+    #     db.session.delete(self)
+    #     db.session.commit()
+
+    # def format(self):
+    #     return {
+    #         'date_time': self.date_time,
+    #         'id_user': self.id_user,
+    #         'username': self.username
+    #     }
