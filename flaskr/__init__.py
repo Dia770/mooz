@@ -310,8 +310,8 @@ def create_app(test_config=None):
 
                         # inserts a connexion log for the event
                         date_time = datetime.now()
-                        con = Connexion(id_user=user_with_that_name.id,
-                                        username=user_with_that_name.name, date_time=date_time)
+                        con = Connexion(
+                            id_user=user_with_that_name.id, date_time=date_time)
                         con.insert()
 
                         # generates the JWT Token

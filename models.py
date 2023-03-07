@@ -189,12 +189,10 @@ class Connexion(db.Model):
     id = Column(Integer, primary_key=True)
     date_time = Column(DateTime, default=datetime.datetime.now())
     id_user = Column(Integer)
-    username = Column(String(64))
 
-    def __init__(self, date_time, id_user, username):
+    def __init__(self, date_time, id_user):
         self.date_time = date_time
         self.id_user = id_user
-        self.username = username
 
     def insert(self):
         db.session.add(self)
@@ -210,8 +208,7 @@ class Connexion(db.Model):
     def format(self):
         return {
             'date_time': self.date_time,
-            'id_user': self.id_user,
-            'username': self.username
+            'id_user': self.id_user
         }
 
 
